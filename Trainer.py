@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import confusion_matrix, accuracy_score # para calcular la matriz de confusion y la precision del modelo
 
 
 class Trainer:
+
+    # se encarga de entrenar y evaluar el modelo de red neuronal
 
     def __init__(self, model, X_train, y_train, X_test, y_test):
         self.model = model
