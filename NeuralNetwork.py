@@ -3,6 +3,26 @@ from ActivationFunction import ActivationFunction
 
 
 class NeuralNetwork:
+
+    # Esta clase implementa la red neuronal descrita en la memoria.
+    # Utiliza el optimizador Adam para ajustar los pesos y sesgos, proporcionando una convergencia
+    # más estable y eficiente que el descenso de gradiente estocástico tradicional.
+    # Los parámetros del optimizador Adam, como beta1, beta2 y epsilon, son configurables.
+
+    # Tareas realizadas por la clase:
+    #
+    # 1. Inicialización: Configuración de los pesos y sesgos aleatorios y definición parámetros específicos de
+    #    Adam para los momentos de primer y segundo orden.
+
+    # 2. Propagación hacia adelante (forward): calcula las salidas de cada capa pasando las entradas a
+    #    través de las conexiones y aplicando las funciones de activación correspondientes.
+
+    # 3. Retropropagación (backward): calcula los errores de cada capa y actualiza los pesos y sesgos
+    #    utilizando el optimizador Adam. En este proceso:
+    #    - Se calculan los gradientes de los pesos y los sesgos de cada capa.
+    #    - Se actualizan los valores de los momentos de primer y segundo orden para cada peso y sesgo.
+    #    - Finalmente, los parámetros se ajustan según el gradiente y la tasa de aprendizaje.
+
     def __init__(self, input_size, hidden_size, output_size, learning_rate=0.001, beta1=0.9, beta2=0.999, epsilon=1e-8,
                  activation_hidden="sigmoid", activation_output="softmax"):
         self.learning_rate = learning_rate

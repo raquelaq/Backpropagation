@@ -6,6 +6,14 @@ from sklearn.preprocessing import OneHotEncoder
 
 class DatasetLoader:
 
+    # Esta clase permite cargar y preprocesar conjuntos de datos comunes de sklearn, como "iris" y "wine".
+    # Facilita el acceso a estos datos en un formato listo para usar en redes neuronales y modelos de aprendizaje automático.
+    # La clase realiza las siguientes tareas:
+    # 1. Carga del dataset especificado.
+    # 2. Normalización de las características (escalando los valores para que estén entre 0 y 1).
+    # 3. One-Hot Encoding de las etiquetas, transformando las clases en vectores binarios.
+    # 4. División del conjunto de datos en subconjuntos de entrenamiento y prueba.
+
     def __init__(self, dataset_name):
         self.dataset_name = dataset_name
         self.X_train, self.X_test, self.y_train, self.y_test = None, None, None, None

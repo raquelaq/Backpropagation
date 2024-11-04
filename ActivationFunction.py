@@ -3,6 +3,13 @@ import numpy as np
 
 class ActivationFunction:
 
+    # Esta clase define un conjunto de funciones de activación comunes utilizadas en redes neuronales.
+    # Como comentamos en la memoria, las funciones de activación permiten que estas redes
+    # modelen relaciones no lineales, lo cual es fundamental para su capacidad de aprendizaje.
+    # Cada función está implementada como un metodo estático,
+    # lo que permite llamarla sin necesidad de instanciar la clase.
+    # Las funciones incluidas en esta clase son sigmoid, tanh, relu y softmax, con sus respectivas derivadas.
+
     @staticmethod
     def sigmoid(x):
         return 1 / (1 + np.exp(-x))

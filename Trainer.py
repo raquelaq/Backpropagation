@@ -1,11 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.metrics import confusion_matrix, accuracy_score # para calcular la matriz de confusion y la precision del modelo
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 
 class Trainer:
 
-    # se encarga de entrenar y evaluar el modelo de red neuronal
+    # Esta clase gestiona el entrenamiento, evaluación y visualización de la pérdida de la red neuronal.
+    # Simplifica el flujo de trabajo, permitiendo entrenar el modelo, evaluar su precisión y monitorear su rendimiento.
+
+    # Principales métodos:
+    # 1. train: entrena el modelo por un número específico de épocas, registrando la pérdida en cada una para
+    #    observar la convergencia.
+    # 2. evaluate: calcula la precisión y la matriz de confusión en el conjunto de prueba, facilitando el análisis
+    #    de rendimiento del modelo.
+    # 3. plot_losses: grafica la pérdida durante el entrenamiento, permitiendo una evaluación visual de la estabilidad
+    #    del modelo.
 
     def __init__(self, model, X_train, y_train, X_test, y_test):
         self.model = model
