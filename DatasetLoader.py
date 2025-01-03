@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
@@ -14,12 +13,13 @@ class DatasetLoader:
     # 3. One-Hot Encoding de las etiquetas, transformando las clases en vectores binarios.
     # 4. División del conjunto de datos en subconjuntos de entrenamiento y prueba.
 
-    def __init__(self, dataset_name):
+    def __init__(self, dataset_name, validation_split=0.2):
         self.dataset_name = dataset_name
-        self.X_train, self.X_test, self.y_train, self.y_test = None, None, None, None
+        self.validation_split = validation_split
+        self.X_train, self.X_val, self.X_test = None, None, None
+        self.y_train, self.y_val, self.y_test = None, None, None
 
     def load_data(self):
-
         if self.dataset_name not in ["iris", "wine"]:
             raise ValueError(f"Dataset '{self.dataset_name}' no reconocido")
 
@@ -35,6 +35,12 @@ class DatasetLoader:
         encoder = OneHotEncoder(sparse_output=False)
         y = encoder.fit_transform(y)
 
+        X_temp, self.X_test, y_temp, self.y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
         # Dividir en datos de entrenamiento y prueba
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-        return self.X_train, self.X_test, self.y_train, self.y_test
+        self.X_train, self.X_val, self.y_train, self.y_val = train_test_split(
+            X_temp, y_temp, test_size=self.validation_split, random_state=42
+        )
+
+        return self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test
+
